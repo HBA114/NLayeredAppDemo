@@ -18,4 +18,9 @@ public class ProductManager : IProductService
         // Business code
         return _productDal.GetAll();
     }
+
+    public List<Product> GetByCategory(int categoryId)
+    {
+        return _productDal.GetAll(p => p.CategoryId == categoryId);
+    }
 }

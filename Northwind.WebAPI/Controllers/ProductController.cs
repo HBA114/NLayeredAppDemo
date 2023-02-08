@@ -19,4 +19,10 @@ public class ProductController : Controller
     {
         return Ok(_productService.GetAll());
     }
+
+    [HttpGet("GetByCategory")]
+    public IActionResult GetProductsByCategory(int categoryId)
+    {
+        return Ok(_productService.GetByCategory(categoryId));
+    }
 }
