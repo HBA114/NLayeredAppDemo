@@ -1,9 +1,10 @@
+using Northwind.Business.Abstract;
 using Northwind.DataAccess.Abstract;
 using Northwind.Entities.Concrete;
 
 namespace Northwind.Business.Concrete;
 
-public class ProductManager
+public class ProductManager : IProductService
 {
     private IProductDal _productDal;
 

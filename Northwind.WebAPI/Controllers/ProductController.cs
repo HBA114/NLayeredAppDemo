@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
-using Northwind.DataAccess.Concrete.EntityFrameworkCore;
 
 namespace Northwind.WebAPI.Controllers;
 
@@ -8,16 +8,16 @@ namespace Northwind.WebAPI.Controllers;
 [Route("api/[controller]")]
 public class ProductController : Controller
 {
-    private readonly ProductManager _productManager;
+    private readonly IProductService _productService;
 
-    public ProductController(ProductManager productManager)
+    public ProductController(IProductService productService)
     {
-        _productManager = productManager;
+        _productService = productService;
     }
 
     [HttpGet]
     public IActionResult GetProducts()
     {
-        return Ok(_productManager.GetAll());
+        return Ok(_productService.GetAll());
     }
 }

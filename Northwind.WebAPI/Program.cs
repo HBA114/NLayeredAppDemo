@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete.EntityFrameworkCore;
@@ -7,7 +8,7 @@ using Northwind.DataAccess.Concrete.NHibernate;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<ProductManager>();
+builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<IProductDal, NhProductDal>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();    // default IProductDal is last one added: EfProductDal
 builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
