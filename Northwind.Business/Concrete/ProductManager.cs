@@ -1,13 +1,13 @@
-using Northwind.DataAccess.Concrete.EntityFrameworkCore;
+using Northwind.DataAccess.Abstract;
 using Northwind.Entities.Concrete;
 
 namespace Northwind.Business.Concrete;
 
 public class ProductManager
 {
-    private EfProductDal _productDal;
+    private IProductDal _productDal;
 
-    public ProductManager(EfProductDal productDal)
+    public ProductManager(IProductDal productDal)
     {
         _productDal = productDal;
     }
