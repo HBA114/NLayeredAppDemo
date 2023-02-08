@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
+using Northwind.DataAccess.Abstract;
 using Northwind.Entities.Concrete;
 
-namespace Northwind.DataAccess.Concrete;
-
-public class ProductDal
+namespace Northwind.DataAccess.Concrete.EntityFrameworkCore;
+public class EfProductDal : IProductDal
 {
     private readonly NorthwindContext context;
 
-    public ProductDal(NorthwindContext context)
+    public EfProductDal(NorthwindContext context)
     {
         this.context = context;
     }
@@ -36,7 +36,7 @@ public class ProductDal
 
     public void Delete(Product product)
     {
-        //     context.Products.Remove(product);
-        //     context.SaveChanges();
+        // context.Products.Remove(product);
+        // context.SaveChanges();
     }
 }
