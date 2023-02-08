@@ -5,33 +5,33 @@ using Northwind.Entities.Concrete;
 namespace Northwind.DataAccess.Concrete.EntityFrameworkCore;
 public class EfProductDal : IProductDal
 {
-    private readonly NorthwindContext context;
+    private readonly NorthwindContext _context;
 
     public EfProductDal(NorthwindContext context)
     {
-        this.context = context;
+        _context = context;
     }
 
     public List<Product> GetAll()
     {
-        return context.Products.ToList();
+        return _context.Products.ToList();
     }
 
     public Product Get(int id)
     {
-        return context.Products.SingleOrDefault(p => p.ProductId == id)!;
+        return _context.Products.SingleOrDefault(p => p.ProductId == id)!;
     }
 
     public void Add(Product product)
     {
-        context.Products.Add(product);
-        context.SaveChanges();
+        _context.Products.Add(product);
+        _context.SaveChanges();
     }
 
     public void Update(Product product)
     {
         // context.Products.Add(product);
-        context.SaveChanges();
+        _context.SaveChanges();
     }
 
     public void Delete(Product product)
