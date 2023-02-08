@@ -5,7 +5,13 @@ namespace Northwind.Business.Concrete;
 
 public class ProductManager
 {
-    ProductDal _productDal = new ProductDal();
+    private ProductDal _productDal;
+
+    public ProductManager(ProductDal productDal)
+    {
+        _productDal = productDal;
+    }
+
     public List<Product> GetAll()
     {
         // Business code
