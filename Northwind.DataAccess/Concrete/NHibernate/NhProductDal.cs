@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Northwind.DataAccess.Abstract;
 using Northwind.Entities.Concrete;
 
@@ -15,12 +16,12 @@ public class NhProductDal : IProductDal
         throw new NotImplementedException();
     }
 
-    public Product Get(int id)
+    public Product Get(Expression<Func<Product, bool>> filter)
     {
         throw new NotImplementedException();
     }
 
-    public List<Product> GetAll()
+    public List<Product> GetAll(Expression<Func<Product, bool>>? filter = null)
     {
         throw new NotImplementedException();
     }
