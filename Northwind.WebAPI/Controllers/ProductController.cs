@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Northwind.Business.Abstract;
-using Northwind.Business.Concrete;
 
 namespace Northwind.WebAPI.Controllers;
 

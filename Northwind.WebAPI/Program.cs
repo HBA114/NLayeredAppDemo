@@ -9,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IProductService, ProductManager>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<IProductDal, NhProductDal>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();    // default IProductDal is last one added: EfProductDal
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 builder.Services.AddControllers();
