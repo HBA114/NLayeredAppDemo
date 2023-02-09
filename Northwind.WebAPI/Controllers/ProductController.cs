@@ -25,4 +25,10 @@ public class ProductController : Controller
     {
         return Ok(_productService.GetByCategory(categoryId));
     }
+
+    [HttpGet("GetByName")]
+    public IActionResult GetProductsByName(string name)
+    {
+        return Ok(_productService.GetByName(name));
+    }
 }

@@ -23,4 +23,9 @@ public class ProductManager : IProductService
     {
         return _productDal.GetAll(p => p.CategoryId == categoryId);
     }
+
+    public List<Product> GetByName(string name)
+    {
+        return _productDal.GetAll(p => p.ProductName.ToLower().Contains(name.ToLower()));
+    }
 }
