@@ -1,4 +1,7 @@
 {
+    "cSpell.words": [
+        "Northwind"
+    ],
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -15,8 +18,5 @@
         "**/obj": true,
         "obj": true
     },
-    "explorerExclude.backup": {},
-    "cSpell.words": [
-        "Northwind"
-    ]
+    "explorerExclude.backup": {}
 }

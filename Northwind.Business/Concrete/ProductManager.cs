@@ -13,6 +13,16 @@ public class ProductManager : IProductService
         _productDal = productDal;
     }
 
+    public void Add(Product product)
+    {
+        _productDal.Add(product);
+    }
+
+    public void Delete(int id)
+    {
+        _productDal.Delete(_productDal.Get(p => p.ProductId == id));
+    }
+
     public List<Product> GetAll()
     {
         // Business code
@@ -24,8 +34,18 @@ public class ProductManager : IProductService
         return _productDal.GetAll(p => p.CategoryId == categoryId);
     }
 
+    public Product GetById(int id)
+    {
+        return _productDal.Get(p => p.ProductId == id);
+    }
+
     public List<Product> GetByName(string name)
     {
-        return _productDal.GetAll(p => p.ProductName.ToLower().Contains(name.ToLower()));
+        return _productDal.GetAll(p => p.ProductName!.ToLower().Contains(name.ToLower()));
+    }
+
+    public void Update(Product product)
+    {
+        _productDal.Update(product);
     }
 }
