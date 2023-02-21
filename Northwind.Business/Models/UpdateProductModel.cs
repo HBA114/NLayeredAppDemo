@@ -1,6 +1,6 @@
 namespace Northwind.Business.Models;
 
-public class UpdateProductModel 
+public record UpdateProductModel 
 {
     public int ProductId { get; set; }
     public int CategoryId { get; set; }   

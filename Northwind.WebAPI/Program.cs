@@ -1,6 +1,8 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Business.Abstract;
 using Northwind.Business.Concrete;
+using Northwind.Business.ValidationRules.FluentValidation;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete.EntityFrameworkCore;
 using Northwind.DataAccess.Concrete.NHibernate;
@@ -10,10 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
-builder.Services.AddScoped<IProductDal, NhProductDal>();
+// builder.Services.AddScoped<IProductDal, NhProductDal>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();    // default IProductDal is last one added: EfProductDal
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 builder.Services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+
+builder.Services.AddValidatorsFromAssemblyContaining<ProductValidator>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

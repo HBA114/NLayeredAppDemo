@@ -1,6 +1,6 @@
 namespace Northwind.Business.Models;
 
-public class AddProductModel 
+public record AddProductModel 
 {
     public int CategoryId { get; set; }   
     public string? ProductName { get; set; }

@@ -1,4 +1,6 @@
 using Northwind.Business.Abstract;
+using Northwind.Business.Utilities;
+using Northwind.Business.ValidationRules.FluentValidation;
 using Northwind.DataAccess.Abstract;
 using Northwind.Entities.Concrete;
 
@@ -15,7 +17,14 @@ public class ProductManager : IProductService
 
     public void Add(Product product)
     {
+        ValidationTool.Validate(new ProductValidator(), product);
         _productDal.Add(product);
+    }
+
+    public void Update(Product product)
+    {
+        ValidationTool.Validate(new ProductValidator(), product);
+        _productDal.Update(product);
     }
 
     public void Delete(int id)
@@ -42,10 +51,5 @@ public class ProductManager : IProductService
     public List<Product> GetByName(string name)
     {
         return _productDal.GetAll(p => p.ProductName!.ToLower().Contains(name.ToLower()));
-    }
-
-    public void Update(Product product)
-    {
-        _productDal.Update(product);
     }
 }
